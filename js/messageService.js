@@ -5,8 +5,6 @@ angular.module('chatroom').service('messageService', function($http){
   //The url for the get request should be 'http://practiceapi.devmounta.in/api/chats'
   //Be sure to return whatever gets returned from $http so you can call .then in your controller.
 
-
-
   //On the line below create the postMessage method. This method will add data to the backend server.
   //The url for the request needs to be 'http://practiceapi.devmounta.in/api/chats'
   //Because we're making a POST request, we need a way to tell the server the data we want to give it,
@@ -14,7 +12,21 @@ angular.module('chatroom').service('messageService', function($http){
   //Also, remember that $http returns a promise. So if you return the whole $http call (return $http(...)), you can then use .then in your controller.
 
   //postMessage method here
-
+  this.postMessages = function(yourMessage, data) {
+    return $http.post('http://practiceapi.devmounta.in/api/chats', {
+      data: data
+    });
+  };
 
   //getMessages method here
+  this.getMessages = function() {
+    return $http.get('http://practiceapi.devmounta.in/api/chats');
+  };
+
+  // this.postCookie = function(newCookie) {
+  //   return $http.post('http://practiceapi.devmounta.in/api/cookies', {
+  //     cookie: newCookie
+  //   });
+  // };
+
 });
